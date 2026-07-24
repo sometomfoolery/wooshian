@@ -16,7 +16,8 @@ section {
     justify-content: center;
 }
 
-div {
-    color: green;
+div#title {
+    color: #4d9423;
+    font-size: 4rem;
     font-family: "Vegan";
 }
