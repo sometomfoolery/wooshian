@@ -1,6 +1,6 @@
 @font-face {
     font-family: "Vegan";
-    src: url(resources\fonts\vegan-style-font\VeganStylePersonalUse-5Y58.ttf);
+    src: url("resources/fonts/vegan-style-font/VeganStylePersonalUse-5Y58.ttf") format("truetype");
 }
 
 body {
@@ -18,5 +18,5 @@ section {
 
 div {
     color: green;
-    font: "Vegan";
+    font-family: "Vegan";
 }
