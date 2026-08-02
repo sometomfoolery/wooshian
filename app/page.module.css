@@ -4,10 +4,10 @@
 }
 
 .page {
-  --background: rgb(18, 20, 15);
-  --foreground: rgb(31, 32, 29);
+  --background: #080b03;
+  --foreground: #131809;
 
-  --text-primary: #fff;
+  --text-primary: #d6b947;
 
   display: flex;
   flex: 1;
