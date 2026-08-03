@@ -4,7 +4,7 @@ import styles from "./page.module.css";
 export default function Home() {
   return (
     <div className={styles.page}>
-        <p className={styles.title}>Wooshian</p>
+      <p className={styles.title}>Wooshian</p>
     </div>
   );
 }
