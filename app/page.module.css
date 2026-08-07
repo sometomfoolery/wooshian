@@ -36,6 +36,16 @@
   font-size: 100px;
 }
 
+div.subtitle {
+  padding: 0;
+}
+
+p.subtitle {
+  color: var(--text-primary);
+  font-family: 'Roman SD', sans-serif;
+  font-size: 30px;
+}
+
 /* https://www.w3schools.com/cssref/atrule_media.php */
 /* Enable hover only on non-touch devices */
 @media (hover: hover) and (pointer: fine) {}
