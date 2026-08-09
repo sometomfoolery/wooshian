@@ -12,13 +12,10 @@ export async function POST(request) {
         .eq('username', username)
         .single();
 
-    if (error || !user) {
-        return NextResponse.json({ error: 'Invalid username or password' }, { status: 401 });
-    }
-
     const passwordIsValid = await bcrypt.compare(password, user.password_hash);
-    if (!passwordIsValid) {
-        return NextResponse.json({ error: 'Invalid username or password' }, { status: 401 });
+
+    if (error || !user || !passwordIsValid) {
+        return NextResponse.json({ error: 'Invalid username or password' }, { status: 401 });;
     }
 
     await createSession(user.id);
