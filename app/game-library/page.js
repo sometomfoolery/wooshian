@@ -6,7 +6,11 @@ const supabasePublishableKey = process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY;
 
 async function GameLibraryData() {
     const supabase = await createClient(supabaseUrl, supabasePublishableKey);
-    const { data: games } = await supabase.from("games").select("*");
+    const { data: games, error } = await supabase.from("games").select("*");
+    if (error) {
+        console.error("Error fetching games: ", error);
+        return <p>Error fetching games.</p>;
+    }
     return <pre>{JSON.stringify(games, null, 2)}</pre>;
 }
 
