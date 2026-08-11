@@ -1,8 +1,11 @@
 import { createClient } from "@supabase/supabase-js";
 import { Suspense } from "react";
 
+const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
+const supabasePublishableKey = process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY;
+
 async function GameLibraryData() {
-    const supabase = await createClient();
+    const supabase = await createClient(supabaseUrl, supabasePublishableKey);
     const { data: games } = await supabase.from("games").select("*");
     return games;
 }
