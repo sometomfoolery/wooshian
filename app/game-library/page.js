@@ -4,11 +4,13 @@ import { Suspense } from "react";
 const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
 const supabasePublishableKey = process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY;
 
+export const dynamic = 'force-dynamic';
+
 async function GameLibraryData() {
     const supabase = createClient(supabaseUrl, supabasePublishableKey);
     const { data: games, error } = await supabase.from("games").select("*");
     if (error) {
-        console.log("Error fetching games: ", error);
+        console.error("Error fetching games: ", error);
         return <p>Error fetching games.</p>;
     }
     return <pre>{JSON.stringify(games, null, 2)}</pre>;
