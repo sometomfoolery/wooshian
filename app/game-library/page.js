@@ -1,4 +1,4 @@
-import createClient from "@/lib/supabase-server";
+import createClient from "@supabase/supabase-js";
 import { Suspense } from "react";
 
 async function GameLibraryData() {
