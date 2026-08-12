@@ -30,7 +30,7 @@ async function GameLibraryData() {
             if (game.minimum_claimed_length_minutes === game.maximum_claimed_length_minutes) {
                 return `${game.minimum_claimed_length_minutes} minutes`;
             }
-            return `${game.minimum_claimed_length_minutes} - ${game.maximum_claimed_length_minutes} minutes`;
+            return `${game.minimum_claimed_length_minutes}-${game.maximum_claimed_length_minutes} minutes`;
         } else if (game.minimum_claimed_length_minutes) {
             return `${game.minimum_claimed_length_minutes}+ minutes`;
         } else if (game.maximum_claimed_length_minutes) {
