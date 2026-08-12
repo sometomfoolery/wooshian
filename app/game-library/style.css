@@ -7,22 +7,27 @@
 }
 
 table {
-    border: 1px solid white;
+    --border-color: #fff;
+    --header-background-color: #212c0b;
+    --header-text-color: #ddc76f;
+    --even-column-background-color: #030303;
+
+    border: 1px solid var(--border-color);
     border-collapse: collapse;
 }
 
 table th, table td {
-    border: 1px solid white;
+    border: 1px solid var(--border-color);
     padding: 8px;
     text-align: left;
 }
 
 table th {
-    background-color: #212c0b;
-    color: #ddc76f;
+    background-color: var(--header-background-color);
+    color: var(--header-text-color);
     font-weight: bold;
 }
 
 table tr:nth-child(even) {
-    background-color: #030303;
+    background-color: var(--even-column-background-color);
 }
