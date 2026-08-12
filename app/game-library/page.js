@@ -8,7 +8,7 @@ export const dynamic = 'force-dynamic';
 
 async function GameLibraryData() {
     const supabase = createClient(supabaseUrl, supabasePublishableKey);
-    const { data: games, error } = await supabase.from("games").select("*");
+    const { data: games, error } = await supabase.from("games").select("*, game_designers(name), game_publishers(name)");
     if (error) {
         console.error("Error fetching games: ", error);
         return <p>Error fetching games.</p>;
@@ -19,6 +19,8 @@ async function GameLibraryData() {
             <th>Game</th>
             <th>Player Count</th>
             <th>Game Length</th>
+            <th>Designer</th>
+            <th>Publisher</th>
         </thead>
         <tbody>
             {games.map((game) => (
@@ -26,6 +28,8 @@ async function GameLibraryData() {
                     <td>{game.name}</td>
                     <td>{game.minimum_players} - {game.maximum_players}</td>
                     <td>{game.minimum_claimed_length_minutes}-{game.maximum_claimed_length_minutes} minutes</td>
+                    <td>{game.game_designers?.name}</td>
+                    <td>{game.game_publishers?.name}</td>
                 </tr>
             ))}
         </tbody>
