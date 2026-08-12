@@ -64,7 +64,7 @@ async function GameLibraryData() {
 
 export default async function Home() {
     return (
-        <div>
+        <div className={styles.page}>
             <h1>Game Library</h1>
             <Suspense fallback="Loading...">
                 <GameLibraryData />
