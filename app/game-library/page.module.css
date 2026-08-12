@@ -6,7 +6,7 @@
     min-height: 100vh;
 }
 
-table {
+.page table {
     --border-color: #fff;
     --header-background-color: #212c0b;
     --header-text-color: #ddc76f;
@@ -16,18 +16,18 @@ table {
     border-collapse: collapse;
 }
 
-table th, table td {
+.page table th, .page table td {
     border: 1px solid var(--border-color);
     padding: 8px;
     text-align: left;
 }
 
-table th {
+.page table th {
     background-color: var(--header-background-color);
     color: var(--header-text-color);
     font-weight: bold;
 }
 
-table tr:nth-child(even) {
+.page table tr:nth-child(even) {
     background-color: var(--even-column-background-color);
 }
