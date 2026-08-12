@@ -1,6 +1,6 @@
 import { createClient } from "@supabase/supabase-js";
 import { Suspense } from "react";
-import styles from "./style.css";
+import styles from "./style.module.css";
 
 const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
 const supabasePublishableKey = process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY;
