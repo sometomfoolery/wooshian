@@ -17,7 +17,7 @@ async function GameLibraryData() {
 
     const playerCount = (game) => {
         if (game.minimum_players && game.maximum_players) {
-            return `${game.minimum_players} - ${game.maximum_players}`;
+            return `${game.minimum_players}-${game.maximum_players}`;
         } else if (game.minimum_players) {
             return `${game.minimum_players}+`;
         } else if (game.maximum_players) {
