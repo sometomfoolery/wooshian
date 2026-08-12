@@ -1,9 +1,20 @@
 table {
     border: 1px solid white;
+    border-collapse: collapse;
 }
 
 table th, table td {
     border: 1px solid white;
     padding: 8px;
     text-align: left;
+}
+
+table th {
+    background-color: #293a06;
+    color: #d6b947;
+    font-weight: bold;
+}
+
+table tr:nth-child(even) {
+    background-color: #030303;
 }
