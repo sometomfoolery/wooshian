@@ -26,6 +26,9 @@ async function GameLibraryData() {
 
     const gameDuration = (game) => {
         if (game.minimum_claimed_length_minutes && game.maximum_claimed_length_minutes) {
+            if (game.minimum_claimed_length_minutes === game.maximum_claimed_length_minutes) {
+                return `${game.minimum_claimed_length_minutes} minutes`;
+            }
             return `${game.minimum_claimed_length_minutes} - ${game.maximum_claimed_length_minutes} minutes`;
         } else if (game.minimum_claimed_length_minutes) {
             return `${game.minimum_claimed_length_minutes}+ minutes`;
