@@ -14,6 +14,26 @@ async function GameLibraryData() {
         return <p>Error fetching games.</p>;
     }
 
+    const playerCount = (game) => {
+        if (game.minimum_players && game.maximum_players) {
+            return `${game.minimum_players} - ${game.maximum_players}`;
+        } else if (game.minimum_players) {
+            return `${game.minimum_players}+`;
+        } else if (game.maximum_players) {
+            return `Up to ${game.maximum_players}`;
+        }
+    }
+
+    const gameDuration = (game) => {
+        if (game.minimum_claimed_length_minutes && game.maximum_claimed_length_minutes) {
+            return `${game.minimum_claimed_length_minutes} - ${game.maximum_claimed_length_minutes} minutes`;
+        } else if (game.minimum_claimed_length_minutes) {
+            return `${game.minimum_claimed_length_minutes}+ minutes`;
+        } else if (game.maximum_claimed_length_minutes) {
+            return `Up to ${game.maximum_claimed_length_minutes} minutes`;
+        }
+    }
+
     const htmlTable = <table>
         <thead>
             <th>Game</th>
@@ -26,8 +46,8 @@ async function GameLibraryData() {
             {games.map((game) => (
                 <tr key={game.id}>
                     <td>{game.name}</td>
-                    <td>{game.minimum_players} - {game.maximum_players}</td>
-                    <td>{game.minimum_claimed_length_minutes}-{game.maximum_claimed_length_minutes} minutes</td>
+                    <td>{playerCount(game)}</td>
+                    <td>{gameDuration(game)}</td>
                     <td>{game.game_designers?.name}</td>
                     <td>{game.game_publishers?.name}</td>
                 </tr>
