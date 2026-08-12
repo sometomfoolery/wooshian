@@ -13,7 +13,25 @@ async function GameLibraryData() {
         console.error("Error fetching games: ", error);
         return <p>Error fetching games.</p>;
     }
-    return <pre>{JSON.stringify(games, null, 2)}</pre>;
+
+    const htmlTable = <table>
+        <thead>
+            <th>Game</th>
+            <th>Player Count</th>
+            <th>Game Length</th>
+        </thead>
+        <tbody>
+            {games.map((game) => (
+                <tr key={game.id}>
+                    <td>{game.name}</td>
+                    <td>{game.minimum_players} - {game.maximum_players}</td>
+                    <td>{game.minimum_claimed_length_minutes}-{game.maximum_claimed_length_minutes} minutes</td>
+                </tr>
+            ))}
+        </tbody>
+    </table>;
+
+    return htmlTable;
 }
 
 export default async function Home() {
