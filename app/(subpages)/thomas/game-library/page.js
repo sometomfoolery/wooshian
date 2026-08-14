@@ -1,6 +1,7 @@
 import { createClient } from "@supabase/supabase-js";
 import { Suspense } from "react";
 import styles from "./page.module.css";
+import { getSession } from "@/lib/auth";
 
 const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
 const supabasePublishableKey = process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY;
@@ -63,6 +64,8 @@ async function GameLibraryData() {
 }
 
 export default async function Home() {
+    const user = await getSession();
+
     return (
         <div className={styles.page}>
             <h1>Game Library</h1>
