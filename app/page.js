@@ -20,6 +20,9 @@ export default async function Home() {
           <LoginForm />
         </div>
       )}
+      <ul>
+        <li><a href="/thomas">Thomas</a></li>
+      </ul>
     </div>
   );
 }
