@@ -97,7 +97,9 @@ export default function InsertGame() {
                 value={game_publisher_id}
                 onChange={(e) => set_game_publisher_id(e.target.value)}
             />
-            <div>Game designers: {gameDesigners}</div>
+            <div>Game designers: {gameDesigners.map((designer) => (
+                <span key={designer.id}>{designer.name}</span>
+            ))}</div>
         </form>
     );
 }
