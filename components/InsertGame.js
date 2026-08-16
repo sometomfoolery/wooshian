@@ -2,6 +2,16 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import { createClient } from "@supabase/supabase-js";
+
+const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
+const supabasePublishableKey = process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY;
+
+async function getGameDesigners() {
+    const supabase = createClient(supabaseUrl, supabasePublishableKey);
+    const { data: designers, error } = await supabase.from("game_designers").select("*");
+    return designers;
+}
 
 export default function InsertGame() {
     const [name, setName] = useState("");
@@ -13,6 +23,8 @@ export default function InsertGame() {
     const [game_publisher_id, set_game_publisher_id] = useState("");
     const [error, setError] = useState(null);
     const router = useRouter();
+
+    const gameDesigners = getGameDesigners();
 
     async function handleSubmit(event) {
         event.preventDefault();
@@ -85,6 +97,9 @@ export default function InsertGame() {
                 value={game_publisher_id}
                 onChange={(e) => set_game_publisher_id(e.target.value)}
             />
+            <div>Game designers: {gameDesigners?.map((designer) => (
+                <span key={designer.id}>{designer.name}, </span>
+            ))}</div>
         </form>
     );
 }
