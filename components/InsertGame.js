@@ -15,7 +15,8 @@ export default function InsertGame() {
     const [maximum_claimed_length_minutes, set_maximum_claimed_length_minutes] = useState("");
     const [game_designer_id, set_game_designer_id] = useState("");
     const [game_publisher_id, set_game_publisher_id] = useState("");
-    const [gameDesigners, setGameDesigners] = useState([]);
+    const [game_designers, set_game_designers] = useState([]);
+    const [game_publishers, set_game_publishers] = useState([]);
     const [error, setError] = useState(null);
     const router = useRouter();
 
@@ -27,9 +28,21 @@ export default function InsertGame() {
                 console.error("Error fetching game designers: ", error);
                 return;
             }
-            setGameDesigners(designers);
+            set_game_designers(designers);
         }
+
+        async function getGamePublishers() {
+            const supabase = createClient(supabaseUrl, supabasePublishableKey);
+            const { data: publishers, error } = await supabase.from("game_publishers").select("*");
+            if (error) {
+                console.error("Error fetching game publishers: ", error);
+                return;
+            }
+            set_game_publishers(publishers);
+        }
+
         getGameDesigners();
+        getGamePublishers();
     }, []);
 
     async function handleSubmit(event) {
@@ -91,26 +104,30 @@ export default function InsertGame() {
                 value={maximum_claimed_length_minutes}
                 onChange={(e) => set_maximum_claimed_length_minutes(e.target.value)}
             />
-            <input
-                type="number"
-                placeholder="Game Publisher ID"
-                value={game_publisher_id}
-                onChange={(e) => set_game_publisher_id(e.target.value)}
-            />
-            <div>Game designers: {gameDesigners.map((designer) => (
-                <span key={designer.id}>{designer.name}</span>
-            ))}</div>
             <select
                 value={game_designer_id}
                 onChange={(e) => set_game_designer_id(e.target.value)}
             >
                 <option value="">Select a game designer</option>
-                {gameDesigners.map((designer) => (
+                {game_designers.map((designer) => (
                     <option key={designer.id} value={designer.id}>
                         {designer.name}
                     </option>
                 ))}
             </select>
+            <select
+                value={game_publisher_id}
+                onChange={(e) => set_game_publisher_id(e.target.value)}
+            >
+                <option value="">Select a game publisher</option>
+                {game_publishers.map((publisher) => (
+                    <option key={publisher.id} value={publisher.id}>
+                        {publisher.name}
+                    </option>
+                ))}
+            </select>
+            <button type="submit">Insert Game</button>
+            {error && <p style={{ color: 'red' }}>{error}</p>}
         </form>
     );
 }
