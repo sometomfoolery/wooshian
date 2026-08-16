@@ -3,6 +3,13 @@
   src: url('resources/fonts/roman_sd/Roman\ SD.ttf') format('truetype');
 }
 
+:root {
+  --background: #080b03;
+  --foreground: #131809;
+
+  --text-primary: #d6b947;
+}
+
 #header {
   display: flex;
   width: 100%;
@@ -13,10 +20,6 @@
 }
 
 .page {
-  --background: #080b03;
-  --foreground: #131809;
-
-  --text-primary: #d6b947;
 
   display: flex;
   flex: 1;
