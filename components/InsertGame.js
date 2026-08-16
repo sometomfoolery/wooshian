@@ -66,10 +66,22 @@ export default function InsertGame() {
         const data = await response.json();
 
         if (response.ok) {
+            console.log('Game inserted successfully:', data);
+            setName('');
+            set_minimum_players('');
+            set_maximum_players('');
+            set_minimum_claimed_length_minutes('');
+            set_maximum_claimed_length_minutes('');
+            set_game_designer_id('');
+            set_game_publisher_id('');
+            set_game_designers([]);
+            set_game_publishers([]);
+            setError('');
             router.refresh();
         } else {
             const data = await response.json();
             setError(data.error);
+            console.error('Error inserting game:', data.error);
         }
     }
 
