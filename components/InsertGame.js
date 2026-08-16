@@ -65,10 +65,11 @@ export default function InsertGame() {
 
         const data = await response.json();
 
-        if (!response.ok) {
-            setError(data.error);
+        if (response.ok) {
+            router.refresh();
         } else {
-            router.push('/games');
+            const data = await response.json();
+            setError(data.error);
         }
     }
 
