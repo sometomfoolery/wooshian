@@ -2,6 +2,7 @@ import { createClient } from "@supabase/supabase-js";
 import { Suspense } from "react";
 import styles from "./page.module.css";
 import { getSession } from "@/lib/auth";
+import InsertGame from "@/components/InsertGame";
 
 const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
 const supabasePublishableKey = process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY;
@@ -74,7 +75,10 @@ export default async function Home() {
             </Suspense>
             <div>
                 { user ? (
-                    <h2>You are logged in as {user.username}</h2>
+                    <div>
+                        <h2>You are logged in as {user.username}</h2>
+                        <InsertGame />
+                    </div>
                 ) : (
                     <h2>You are not logged in</h2>
                 )}
