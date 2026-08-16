@@ -66,7 +66,6 @@ export default function InsertGame() {
         const data = await response.json();
 
         if (response.ok) {
-            console.log('Game inserted successfully:', data);
             setName('');
             set_minimum_players('');
             set_maximum_players('');
@@ -81,7 +80,6 @@ export default function InsertGame() {
         } else {
             const data = await response.json();
             setError(data.error);
-            console.error('Error inserting game:', data.error);
         }
     }
 
