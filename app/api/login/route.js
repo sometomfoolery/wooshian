@@ -15,7 +15,7 @@ export async function POST(request) {
     const passwordIsValid = await bcrypt.compare(password, user.password_hash);
 
     if (error || !user || !passwordIsValid) {
-        return NextResponse.json({ error: 'Invalid username or password' }, { status: 401 });;
+        return NextResponse.json({ error: 'Invalid username or password' }, { status: 401 });
     }
 
     await createSession(user.id);
