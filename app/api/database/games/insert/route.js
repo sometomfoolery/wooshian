@@ -5,7 +5,7 @@ import { getSession } from '@/lib/auth';
 export async function POST(request) {
     const user = await getSession();
 
-    if (!user?.is_site_admin) {
+    if (!(user?.is_site_admin)) {
         return NextResponse.json({ error: 'You are not authorized to insert into the games table' }, { status: 403 });
     }
 
