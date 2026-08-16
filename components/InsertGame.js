@@ -93,12 +93,6 @@ export default function InsertGame() {
             />
             <input
                 type="number"
-                placeholder="Game Designer ID"
-                value={game_designer_id}
-                onChange={(e) => set_game_designer_id(e.target.value)}
-            />
-            <input
-                type="number"
                 placeholder="Game Publisher ID"
                 value={game_publisher_id}
                 onChange={(e) => set_game_publisher_id(e.target.value)}
@@ -106,6 +100,17 @@ export default function InsertGame() {
             <div>Game designers: {gameDesigners.map((designer) => (
                 <span key={designer.id}>{designer.name}</span>
             ))}</div>
+            <select
+                value={game_designer_id}
+                onChange={(e) => set_game_designer_id(e.target.value)}
+            >
+                <option value="">Select a game designer</option>
+                {gameDesigners.map((designer) => (
+                    <option key={designer.id} value={designer.id}>
+                        {designer.name}
+                    </option>
+                ))}
+            </select>
         </form>
     );
 }
