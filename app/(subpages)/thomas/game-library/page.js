@@ -72,6 +72,13 @@ export default async function Home() {
             <Suspense fallback="Loading...">
                 <GameLibraryData />
             </Suspense>
+            <div>
+                { user ? (
+                    <h2>You are logged in as {user.username}</h2>
+                ) : (
+                    <h2>You are not logged in</h2>
+                )}
+            </div>
         </div>
     );
 }
