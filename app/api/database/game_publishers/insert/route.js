@@ -14,7 +14,7 @@ export async function POST(request) {
     } = await request.json();
 
     const { error } = await supabase
-        .from('game_designers')
+        .from('game_publishers')
         .insert({
             name: name
         });
@@ -23,5 +23,5 @@ export async function POST(request) {
         return NextResponse.json({ error: error.message }, { status: 500 });
     }
 
-    return NextResponse.json({ message: 'Game designer inserted successfully' }, { status: 201 });
+    return NextResponse.json({ message: 'Game publisher inserted successfully' }, { status: 201 });
 }
