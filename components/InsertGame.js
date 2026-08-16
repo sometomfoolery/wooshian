@@ -7,12 +7,6 @@ import { createClient } from "@supabase/supabase-js";
 const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
 const supabasePublishableKey = process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY;
 
-async function getGameDesigners() {
-    const supabase = createClient(supabaseUrl, supabasePublishableKey);
-    const { data: designers, error } = await supabase.from("game_designers").select("*");
-    return designers;
-}
-
 export default function InsertGame() {
     const [name, setName] = useState("");
     const [minimum_players, set_minimum_players] = useState("");
@@ -21,10 +15,22 @@ export default function InsertGame() {
     const [maximum_claimed_length_minutes, set_maximum_claimed_length_minutes] = useState("");
     const [game_designer_id, set_game_designer_id] = useState("");
     const [game_publisher_id, set_game_publisher_id] = useState("");
+    const [gameDesigners, setGameDesigners] = useState([]);
     const [error, setError] = useState(null);
     const router = useRouter();
 
-    const gameDesigners = getGameDesigners();
+    useEffect(() => {
+        async function getGameDesigners() {
+            const supabase = createClient(supabaseUrl, supabasePublishableKey);
+            const { data: designers, error } = await supabase.from("game_designers").select("*");
+            if (error) {
+                console.error("Error fetching game designers: ", error);
+                return;
+            }
+            setGameDesigners(designers);
+        }
+        getGameDesigners();
+    }, []);
 
     async function handleSubmit(event) {
         event.preventDefault();
