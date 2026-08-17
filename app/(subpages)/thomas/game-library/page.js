@@ -47,6 +47,7 @@ async function GameLibraryData() {
             <th>Game Length</th>
             <th>Designer</th>
             <th>Publisher</th>
+            <th>Delete</th>
         </thead>
         <tbody>
             {games.map((game) => (
@@ -56,6 +57,7 @@ async function GameLibraryData() {
                     <td>{gameDuration(game)}</td>
                     <td>{game.game_designers?.name}</td>
                     <td>{game.game_publishers?.name}</td>
+                    <td><DeleteGame gameId={game.id} /></td>
                 </tr>
             ))}
         </tbody>
