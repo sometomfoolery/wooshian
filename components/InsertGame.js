@@ -63,8 +63,6 @@ export default function InsertGame() {
             })
         });
 
-        const data = await response.json();
-
         if (response.ok) {
             setName('');
             set_minimum_players('');
@@ -77,6 +75,7 @@ export default function InsertGame() {
             set_game_publishers([]);
             setError('');
             router.refresh();
+
         } else {
             const data = await response.json();
             setError(data.error);
