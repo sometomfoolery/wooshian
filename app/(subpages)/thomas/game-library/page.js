@@ -10,7 +10,7 @@ const supabasePublishableKey = process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY;
 
 export const dynamic = 'force-dynamic';
 
-async function GameLibraryData() {
+async function GameLibraryData(user) {
     const supabase = createClient(supabaseUrl, supabasePublishableKey);
     const { data: games, error } = await supabase.from("games").select("*, game_designers(name), game_publishers(name)");
     if (error) {
@@ -48,7 +48,7 @@ async function GameLibraryData() {
             <th>Game Length</th>
             <th>Designer</th>
             <th>Publisher</th>
-            <th>Delete</th>
+            { user.is_site_admin && <th>Delete</th> }
         </thead>
         <tbody>
             {games.map((game) => (
@@ -58,7 +58,7 @@ async function GameLibraryData() {
                     <td>{gameDuration(game)}</td>
                     <td>{game.game_designers?.name}</td>
                     <td>{game.game_publishers?.name}</td>
-                    <td><DeleteGame gameId={game.id} /></td>
+                    { user.is_site_admin && <td><DeleteGame gameId={game.id} /></td> }
                 </tr>
             ))}
         </tbody>
@@ -74,7 +74,7 @@ export default async function Home() {
         <div className={styles.page}>
             <h1>Game Library</h1>
             <Suspense fallback="Loading...">
-                <GameLibraryData />
+                <GameLibraryData user={user} />
             </Suspense>
             <div>
                 { user ? (
