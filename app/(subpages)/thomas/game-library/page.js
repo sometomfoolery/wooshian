@@ -10,7 +10,7 @@ const supabasePublishableKey = process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY;
 
 export const dynamic = 'force-dynamic';
 
-async function GameLibraryData(user) {
+async function GameLibraryData({user}) {
     const supabase = createClient(supabaseUrl, supabasePublishableKey);
     const { data: games, error } = await supabase.from("games").select("*, game_designers(name), game_publishers(name)");
     if (error) {
