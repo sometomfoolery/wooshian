@@ -3,6 +3,7 @@ import { Suspense } from "react";
 import styles from "./page.module.css";
 import { getSession } from "@/lib/auth";
 import InsertGame from "@/components/InsertGame";
+import DeleteGame from "@/components/DeleteGame";
 
 const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
 const supabasePublishableKey = process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY;
