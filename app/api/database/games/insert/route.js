@@ -65,7 +65,7 @@ export async function POST(request) {
             name: name,
             minimum_players: minimum_players,
             maximum_players: nullable_maximum_players,
-            minimum_claimed_length_minutes: minimum_claimed_length_minutes,
+            minimum_claimed_length_minutes: nullable_minimum_claimed_length_minutes,
             maximum_claimed_length_minutes: nullable_maximum_claimed_length_minutes,
             game_designer_id: nullable_game_designer_id,
             game_publisher_id: nullable_game_publisher_id
