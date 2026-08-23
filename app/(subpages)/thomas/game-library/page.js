@@ -61,6 +61,20 @@ async function GameLibraryData({user}) {
                     { user?.is_site_admin && <td><DeleteGame gameId={game.id} /></td> }
                 </tr>
             ))}
+            { user?.is_site_admin &&
+                <tr>
+                    <td><i>Name</i></td>
+                    <td><i>Player count</i></td>
+                    <td><i>Game length</i></td>
+                    <td><i>Designer</i></td>
+                    <td><i>Publisher</i></td>
+                    <td>
+                        <button>
+                            Add game
+                        </button>
+                    </td>
+                </tr>
+            }
         </tbody>
     </table>;
 
