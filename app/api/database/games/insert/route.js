@@ -54,6 +54,7 @@ export async function POST(request) {
     }
 
     const nullable_maximum_players = maximum_players || null;
+    const nullable_minimum_claimed_length_minutes = minimum_claimed_length_minutes || null;
     const nullable_maximum_claimed_length_minutes = maximum_claimed_length_minutes || null;
     const nullable_game_designer_id = new_game_designer_id || game_designer_id || null;
     const nullable_game_publisher_id = new_game_designer_id || game_publisher_id || null;
