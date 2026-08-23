@@ -36,7 +36,7 @@ export default function DeleteGame({ gameId }) {
             <button onClick={askForConfirmation}>Delete</button>
             {error && <p style={{ color: 'red' }}>{error}</p>}
             {confirmDelete && (
-                <div popover>
+                <div className="popover-container">
                     <div className="popover-content">
                         <h2>Are you sure you want to delete this game?</h2>
                         <p>This action cannot be undone.</p>
