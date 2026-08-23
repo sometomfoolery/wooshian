@@ -61,7 +61,9 @@ export default function InsertGame() {
                 minimum_claimed_length_minutes,
                 maximum_claimed_length_minutes,
                 game_designer_id,
-                game_publisher_id
+                game_publisher_id,
+                new_game_designer_name,
+                new_game_publisher_name
             })
         });
 
