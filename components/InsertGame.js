@@ -15,6 +15,8 @@ export default function InsertGame() {
     const [maximum_claimed_length_minutes, set_maximum_claimed_length_minutes] = useState("");
     const [game_designer_id, set_game_designer_id] = useState("");
     const [game_publisher_id, set_game_publisher_id] = useState("");
+    const [new_game_designer_name, set_new_game_designer_name] = useState("");
+    const [new_game_publisher_name, set_new_game_publisher_name] = useState("");
     const [game_designers, set_game_designers] = useState([]);
     const [game_publishers, set_game_publishers] = useState([]);
     const [error, setError] = useState(null);
@@ -125,6 +127,12 @@ export default function InsertGame() {
                     </option>
                 ))}
             </select>
+            <input
+                type="text"
+                placeholder="New Game Designer Name"
+                value={new_game_designer_name}
+                onChange={(e) => set_new_game_designer_name(e.target.value)}
+            />
             <select
                 value={game_publisher_id}
                 onChange={(e) => set_game_publisher_id(e.target.value)}
@@ -136,6 +144,12 @@ export default function InsertGame() {
                     </option>
                 ))}
             </select>
+            <input
+                type="text"
+                placeholder="New Game Publisher Name"
+                value={new_game_publisher_name}
+                onChange={(e) => set_new_game_publisher_name(e.target.value)}
+            />
             <button type="submit">Insert Game</button>
             {error && <p style={{ color: 'red' }}>{error}</p>}
         </form>

@@ -16,8 +16,38 @@ export async function POST(request) {
         minimum_claimed_length_minutes,
         maximum_claimed_length_minutes,
         game_designer_id,
-        game_publisher_id
+        game_publisher_id,
+        new_game_designer_name,
+        new_game_publisher_name
     } = await request.json();
+
+    if (new_game_designer_name) {
+        const { data: newDesigner, error: designerError } = await supabase
+            .from('game_designers')
+            .insert({ name: new_game_designer_name })
+            .select()
+            .single();
+
+        if (designerError) {
+            return NextResponse.json({ error: designerError.message }, { status: 500 });
+        }
+
+        game_designer_id = newDesigner.id;
+    }
+
+    if (new_game_publisher_name) {
+        const { data: newPublisher, error: publisherError } = await supabase
+            .from('game_publishers')
+            .insert({ name: new_game_publisher_name })
+            .select()
+            .single();
+
+        if (publisherError) {
+            return NextResponse.json({ error: publisherError.message }, { status: 500 });
+        }
+
+        game_publisher_id = newPublisher.id;
+    }
 
     const { error } = await supabase
         .from('games')
