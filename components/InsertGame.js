@@ -20,27 +20,27 @@ export default function InsertGame() {
     const [error, setError] = useState(null);
     const router = useRouter();
 
+    async function getGameDesigners() {
+        const supabase = createClient(supabaseUrl, supabasePublishableKey);
+        const { data: designers, error } = await supabase.from("game_designers").select("*");
+        if (error) {
+            console.error("Error fetching game designers: ", error);
+            return;
+        }
+        set_game_designers(designers);
+    }
+
+    async function getGamePublishers() {
+        const supabase = createClient(supabaseUrl, supabasePublishableKey);
+        const { data: publishers, error } = await supabase.from("game_publishers").select("*");
+        if (error) {
+            console.error("Error fetching game publishers: ", error);
+            return;
+        }
+        set_game_publishers(publishers);
+    }
+
     useEffect(() => {
-        async function getGameDesigners() {
-            const supabase = createClient(supabaseUrl, supabasePublishableKey);
-            const { data: designers, error } = await supabase.from("game_designers").select("*");
-            if (error) {
-                console.error("Error fetching game designers: ", error);
-                return;
-            }
-            set_game_designers(designers);
-        }
-
-        async function getGamePublishers() {
-            const supabase = createClient(supabaseUrl, supabasePublishableKey);
-            const { data: publishers, error } = await supabase.from("game_publishers").select("*");
-            if (error) {
-                console.error("Error fetching game publishers: ", error);
-                return;
-            }
-            set_game_publishers(publishers);
-        }
-
         getGameDesigners();
         getGamePublishers();
     }, []);
@@ -69,9 +69,8 @@ export default function InsertGame() {
             set_maximum_players('');
             set_minimum_claimed_length_minutes('');
             set_maximum_claimed_length_minutes('');
-            set_game_designers([]);
-            set_game_publishers([]);
-            setError('');
+            getGameDesigners();
+            getGamePublishers();
             router.refresh();
 
         } else {
