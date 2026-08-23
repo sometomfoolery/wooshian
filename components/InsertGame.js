@@ -15,8 +15,8 @@ export default function InsertGame() {
     const [maximum_claimed_length_minutes, set_maximum_claimed_length_minutes] = useState("");
     const [game_designer_id, set_game_designer_id] = useState("");
     const [game_publisher_id, set_game_publisher_id] = useState("");
-    const [new_game_designer_name, set_new_game_designer_name] = useState("");
-    const [new_game_publisher_name, set_new_game_publisher_name] = useState("");
+    const [game_designer_name, set_new_game_designer_name] = useState("");
+    const [game_publisher_name, set_new_game_publisher_name] = useState("");
     const [game_designers, set_game_designers] = useState([]);
     const [game_publishers, set_game_publishers] = useState([]);
     const [error, setError] = useState(null);
@@ -60,10 +60,8 @@ export default function InsertGame() {
                 maximum_players,
                 minimum_claimed_length_minutes,
                 maximum_claimed_length_minutes,
-                game_designer_id,
-                game_publisher_id,
-                new_game_designer_name,
-                new_game_publisher_name
+                game_designer_name,
+                game_publisher_name
             })
         });
 
@@ -133,7 +131,7 @@ export default function InsertGame() {
                 <input
                     type="text"
                     placeholder="New Game Designer Name"
-                    value={new_game_designer_name}
+                    value={game_designer_name}
                     onChange={(e) => set_new_game_designer_name(e.target.value)}
                 />
                 <div>
@@ -159,7 +157,7 @@ export default function InsertGame() {
                 <input
                     type="text"
                     placeholder="New Game Publisher Name"
-                    value={new_game_publisher_name}
+                    value={game_publisher_name}
                     onChange={(e) => set_new_game_publisher_name(e.target.value)}
                 />
                 <div>

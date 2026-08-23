@@ -15,49 +15,37 @@ export async function POST(request) {
         maximum_players,
         minimum_claimed_length_minutes,
         maximum_claimed_length_minutes,
-        game_designer_id,
-        game_publisher_id,
-        new_game_designer_name,
-        new_game_publisher_name
+        game_designer_name,
+        game_publisher_name
     } = await request.json();
 
-    var new_game_designer_id = "";
+    async function get_or_create(table, name) {
+        if (!name) return null;
 
-    if (new_game_designer_name) {
-        const { data: newDesigner, error: designerError } = await supabase
-            .from('game_designers')
-            .insert({ name: new_game_designer_name })
+        const { date: existing, error } = await supabase
+            .from(table)
             .select()
+            .eq('name', name)
             .single();
 
-        if (designerError) {
-            return NextResponse.json({ error: designerError.message }, { status: 500 });
+        if (error) {
+            const { data: created } = await supabase
+                .from(table)
+                .insert({ name: name })
+                .select()
+                .single();
+            return created.id;
         }
 
-        new_game_designer_id = newDesigner.id;
+        return existing.id;
     }
 
-    var new_game_publisher_id = "";
-
-    if (new_game_publisher_name) {
-        const { data: newPublisher, error: publisherError } = await supabase
-            .from('game_publishers')
-            .insert({ name: new_game_publisher_name })
-            .select()
-            .single();
-
-        if (publisherError) {
-            return NextResponse.json({ error: publisherError.message }, { status: 500 });
-        }
-
-        new_game_publisher_id = newPublisher.id;
-    }
+    const reworked_game_designer_id = await get_or_create('game_designers', game_designer_name);
+    const reworked_game_publishers_id = await get_or_create('game_publishers', game_publisher_name);
 
     const nullable_maximum_players = maximum_players || null;
     const nullable_minimum_claimed_length_minutes = minimum_claimed_length_minutes || null;
     const nullable_maximum_claimed_length_minutes = maximum_claimed_length_minutes || null;
-    const nullable_game_designer_id = new_game_designer_id || game_designer_id || null;
-    const nullable_game_publisher_id = new_game_designer_id || game_publisher_id || null;
 
     const { error } = await supabase
         .from('games')
@@ -67,8 +55,8 @@ export async function POST(request) {
             maximum_players: nullable_maximum_players,
             minimum_claimed_length_minutes: nullable_minimum_claimed_length_minutes,
             maximum_claimed_length_minutes: nullable_maximum_claimed_length_minutes,
-            game_designer_id: nullable_game_designer_id,
-            game_publisher_id: nullable_game_publisher_id
+            game_designer_id: reworked_game_designer_id,
+            game_publisher_id: reworked_game_publishers_id
         });
 
     if (error) {
