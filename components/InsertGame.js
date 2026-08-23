@@ -127,12 +127,19 @@ export default function InsertGame() {
                     </option>
                 ))}
             </select>
-            <input
-                type="text"
-                placeholder="New Game Designer Name"
-                value={new_game_designer_name}
-                onChange={(e) => set_new_game_designer_name(e.target.value)}
-            />
+            <div>
+                <input
+                    type="text"
+                    placeholder="New Game Designer Name"
+                    value={new_game_designer_name}
+                    onChange={(e) => set_new_game_designer_name(e.target.value)}
+                />
+                <div>
+                    <p>Designer 1</p>
+                    <p>Designer 2</p>
+                    <p>Designer 3</p>
+                </div>
+            </div>
             <select
                 value={game_publisher_id}
                 onChange={(e) => set_game_publisher_id(e.target.value)}
