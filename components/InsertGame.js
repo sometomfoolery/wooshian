@@ -136,7 +136,7 @@ export default function InsertGame() {
                 />
                 <div>
                     {game_designers.map((designer) => (
-                        <button key={designer.id} onClick = {() => set_new_game_designer_name(designer.name)}>
+                        <button type="button" key={designer.id} onClick = {() => set_new_game_designer_name(designer.name)}>
                             {designer.name}
                         </button>
                     ))}
