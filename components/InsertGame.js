@@ -116,7 +116,7 @@ export default function InsertGame() {
                 value={maximum_claimed_length_minutes}
                 onChange={(e) => set_maximum_claimed_length_minutes(e.target.value)}
             />
-            <select
+            {/*<select
                 value={game_designer_id}
                 onChange={(e) => set_game_designer_id(e.target.value)}
             >
@@ -126,7 +126,7 @@ export default function InsertGame() {
                         {designer.name}
                     </option>
                 ))}
-            </select>
+            </select>*/}
             <div>
                 <input
                     type="text"
@@ -142,7 +142,7 @@ export default function InsertGame() {
                     ))}
                 </div>
             </div>
-            <select
+            {/*<select
                 value={game_publisher_id}
                 onChange={(e) => set_game_publisher_id(e.target.value)}
             >
@@ -152,13 +152,22 @@ export default function InsertGame() {
                         {publisher.name}
                     </option>
                 ))}
-            </select>
-            <input
-                type="text"
-                placeholder="New Game Publisher Name"
-                value={new_game_publisher_name}
-                onChange={(e) => set_new_game_publisher_name(e.target.value)}
-            />
+            </select>*/}
+            <div>
+                <input
+                    type="text"
+                    placeholder="New Game Publisher Name"
+                    value={new_game_publisher_name}
+                    onChange={(e) => set_new_game_publisher_name(e.target.value)}
+                />
+                <div>
+                    {game_publishers.map((publisher) => (
+                        <button type="button" key={publisher.id} onClick = {() => set_new_game_publisher_name(publisher.name)}>
+                            {publisher.name}
+                        </button>
+                    ))}
+                </div>
+            </div>
             <button type="submit">Insert Game</button>
             {error && <p style={{ color: 'red' }}>{error}</p>}
         </form>
