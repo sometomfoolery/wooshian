@@ -53,19 +53,21 @@ export async function POST(request) {
         new_game_publisher_id = newPublisher.id;
     }
 
-    const final_game_designer_id = new_game_designer_id || game_designer_id || null;
-    const final_game_publisher_id = new_game_designer_id || game_publisher_id || null;
+    const nullable_maximum_players = maximum_players || null;
+    const nullable_maximum_claimed_length_minutes = maximum_claimed_length_minutes || null;
+    const nullable_game_designer_id = new_game_designer_id || game_designer_id || null;
+    const nullable_game_publisher_id = new_game_designer_id || game_publisher_id || null;
 
     const { error } = await supabase
         .from('games')
         .insert({
             name: name,
             minimum_players: minimum_players,
-            maximum_players: maximum_players,
+            maximum_players: nullable_maximum_players,
             minimum_claimed_length_minutes: minimum_claimed_length_minutes,
-            maximum_claimed_length_minutes: maximum_claimed_length_minutes,
-            game_designer_id: final_game_designer_id,
-            game_publisher_id: final_game_publisher_id
+            maximum_claimed_length_minutes: nullable_maximum_claimed_length_minutes,
+            game_designer_id: nullable_game_designer_id,
+            game_publisher_id: nullable_game_publisher_id
         });
 
     if (error) {
