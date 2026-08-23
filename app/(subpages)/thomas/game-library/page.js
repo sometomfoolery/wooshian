@@ -62,7 +62,6 @@ async function GameLibraryData({user}) {
                 </tr>
             ))}
             { user?.is_site_admin &&
-                <form>
                     <tr>
                         <td><i>Name</i></td>
                         <td><i>Player count</i></td>
@@ -75,7 +74,6 @@ async function GameLibraryData({user}) {
                             </button>
                         </td>
                     </tr>
-                </form>
             }
         </tbody>
     </table>;
