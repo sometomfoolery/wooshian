@@ -112,17 +112,6 @@ export default function InsertGame() {
                 value={maximum_claimed_length_minutes}
                 onChange={(e) => set_maximum_claimed_length_minutes(e.target.value)}
             />
-            {/*<select
-                value={game_designer_id}
-                onChange={(e) => set_game_designer_id(e.target.value)}
-            >
-                <option value="">Select a game designer</option>
-                {game_designers.map((designer) => (
-                    <option key={designer.id} value={designer.id}>
-                        {designer.name}
-                    </option>
-                ))}
-            </select>*/}
             <div>
                 <input
                     type="text"
@@ -138,17 +127,6 @@ export default function InsertGame() {
                     ))}
                 </div>
             </div>
-            {/*<select
-                value={game_publisher_id}
-                onChange={(e) => set_game_publisher_id(e.target.value)}
-            >
-                <option value="">Select a game publisher</option>
-                {game_publishers.map((publisher) => (
-                    <option key={publisher.id} value={publisher.id}>
-                        {publisher.name}
-                    </option>
-                ))}
-            </select>*/}
             <div>
                 <input
                     type="text"
