@@ -13,10 +13,8 @@ export default function InsertGame() {
     const [maximum_players, set_maximum_players] = useState("");
     const [minimum_claimed_length_minutes, set_minimum_claimed_length_minutes] = useState("");
     const [maximum_claimed_length_minutes, set_maximum_claimed_length_minutes] = useState("");
-    const [game_designer_id, set_game_designer_id] = useState("");
-    const [game_publisher_id, set_game_publisher_id] = useState("");
-    const [game_designer_name, set_new_game_designer_name] = useState("");
-    const [game_publisher_name, set_new_game_publisher_name] = useState("");
+    const [game_designer_name, set_game_designer_name] = useState("");
+    const [game_publisher_name, set_game_publisher_name] = useState("");
     const [game_designers, set_game_designers] = useState([]);
     const [game_publishers, set_game_publishers] = useState([]);
     const [error, setError] = useState(null);
@@ -71,8 +69,6 @@ export default function InsertGame() {
             set_maximum_players('');
             set_minimum_claimed_length_minutes('');
             set_maximum_claimed_length_minutes('');
-            set_game_designer_id('');
-            set_game_publisher_id('');
             set_game_designers([]);
             set_game_publishers([]);
             setError('');
@@ -132,11 +128,11 @@ export default function InsertGame() {
                     type="text"
                     placeholder="New Game Designer Name"
                     value={game_designer_name}
-                    onChange={(e) => set_new_game_designer_name(e.target.value)}
+                    onChange={(e) => set_game_designer_name(e.target.value)}
                 />
                 <div>
                     {game_designers.map((designer) => (
-                        <button type="button" key={designer.id} onClick = {() => set_new_game_designer_name(designer.name)}>
+                        <button type="button" key={designer.id} onClick = {() => set_game_designer_name(designer.name)}>
                             {designer.name}
                         </button>
                     ))}
@@ -158,11 +154,11 @@ export default function InsertGame() {
                     type="text"
                     placeholder="New Game Publisher Name"
                     value={game_publisher_name}
-                    onChange={(e) => set_new_game_publisher_name(e.target.value)}
+                    onChange={(e) => set_game_publisher_name(e.target.value)}
                 />
                 <div>
                     {game_publishers.map((publisher) => (
-                        <button type="button" key={publisher.id} onClick = {() => set_new_game_publisher_name(publisher.name)}>
+                        <button type="button" key={publisher.id} onClick = {() => set_game_publisher_name(publisher.name)}>
                             {publisher.name}
                         </button>
                     ))}
