@@ -64,8 +64,8 @@ export async function POST(request) {
             maximum_players: maximum_players,
             minimum_claimed_length_minutes: minimum_claimed_length_minutes,
             maximum_claimed_length_minutes: maximum_claimed_length_minutes,
-            game_designer_id: game_designer_id,
-            game_publisher_id: game_publisher_id
+            game_designer_id: final_game_designer_id,
+            game_publisher_id: final_game_publisher_id
         });
 
     if (error) {
