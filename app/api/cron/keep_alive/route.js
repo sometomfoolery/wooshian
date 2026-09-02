@@ -5,8 +5,8 @@ export async function GET() {
     const { error } = await supabase.from('users').select('*').limit(1);
 
     if (error) {
-        return NextResponse.json({ success: false, error: error.message }, {status: 500});
+        return NextResponse.json({ ok: false, error: error.message }, {status: 500});
     }
 
-    return NextResponse.json({ success: true, timestamp: new Date().toISOString() });
+    return NextResponse.json({ ok: true, timestamp: new Date().toISOString() });
 }
