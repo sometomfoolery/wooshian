@@ -28,6 +28,12 @@
     font-weight: bold;
 }
 
+.page table tr {
+    background-color: #ddd;
+    border-radius: 10px;
+    margin: 5px 0;
+}
+
 .page table tr:nth-child(even) {
     background-color: var(--even-column-background-color);
 }
