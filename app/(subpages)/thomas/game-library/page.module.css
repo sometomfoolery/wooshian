@@ -40,17 +40,17 @@
     padding-right: 10px;
 }
 
-.row-holder {
+.row_holder {
     background-color: #ddd;
-    padding: 10px 0;
+    padding: 10px;
 }
 
-.page tr td:first-child .row-holder {
+.page tr td:first-child .row_holder {
     border-top-left-radius: 20px;
     border-bottom-left-radius: 20px;
 }
 
-.page tr td:last-child .row-holder {
+.page tr td:last-child .row_holder {
     border-top-right-radius: 20px;
     border-bottom-right-radius: 20px;
 }
