@@ -28,15 +28,15 @@
     font-weight: bold;
 }
 
-td {
+.page td {
     padding: 10px 0px;
 }
 
-td:first-child {
+.page td:first-child {
     padding-left: 10px;
 }
 
-td:last-child {
+.page td:last-child {
     padding-right: 10px;
 }
 
