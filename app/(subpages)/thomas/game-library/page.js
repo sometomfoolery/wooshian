@@ -53,12 +53,12 @@ async function GameLibraryData({user}) {
         <tbody>
             {games.map((game) => (
                 <tr key={game.id}>
-                    <td>{game.name}</td>
-                    <td>{playerCount(game)}</td>
-                    <td>{gameDuration(game)}</td>
-                    <td>{game.game_designers?.name}</td>
-                    <td>{game.game_publishers?.name}</td>
-                    { user?.is_site_admin && <td><DeleteGame gameId={game.id} /></td> }
+                    <td><div className="row-holder">{game.name}</div></td>
+                    <td><div className="row-holder">{playerCount(game)}</div></td>
+                    <td><div className="row-holder">{gameDuration(game)}</div></td>
+                    <td><div className="row-holder">{game.game_designers?.name}</div></td>
+                    <td><div className="row-holder">{game.game_publishers?.name}</div></td>
+                    { user?.is_site_admin && <td><div className="row-holder"><DeleteGame gameId={game.id} /></div></td> }
                 </tr>
             ))}
         </tbody>
