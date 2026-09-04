@@ -42,6 +42,7 @@
 
 .row-holder {
     background-color: #ddd;
+    padding: 10px 0;
 }
 
 .page tr td:first-child .row-holder {
