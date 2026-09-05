@@ -11,6 +11,7 @@
     --header-background-color: #212c0b;
     --header-text-color: #ddc76f;
     --even-column-background-color: #030303;
+    --text-color: #000;
 
     border: 1px solid var(--border-color);
     border-collapse: collapse;
@@ -18,7 +19,6 @@
 
 .page table th, .page table td {
     border: 1px solid var(--border-color);
-    padding: 8px;
     text-align: left;
 }
 
@@ -30,6 +30,7 @@
 
 .page td {
     padding: 10px 0px;
+    color: var(--text-color);
 }
 
 .page td:first-child {
