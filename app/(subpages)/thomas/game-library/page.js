@@ -50,7 +50,6 @@ async function GameLibraryData({user}) {
             <div className={styles.table_cell}>Publisher</div>
             { user?.is_site_admin && <div className={`${styles.table_cell} ${styles.extra_column}`}>Delete</div> }
         </div>
-        <div className={styles.table_body}>
             {games.map((game) => (
                 <div key={game.id} className={styles.table_row}>
                     <div className={styles.table_cell}>
@@ -73,7 +72,6 @@ async function GameLibraryData({user}) {
                     </div> }
                 </div>
             ))}
-        </div>
     </div>;
 
     return htmlTable;
