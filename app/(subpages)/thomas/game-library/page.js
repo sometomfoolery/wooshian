@@ -41,28 +41,38 @@ async function GameLibraryData({user}) {
         }
     }
 
-    const htmlTable = <table>
-        <thead>
-            <th>Game</th>
-            <th>Player Count</th>
-            <th>Game Length</th>
-            <th>Designer</th>
-            <th>Publisher</th>
-            { user?.is_site_admin && <th>Delete</th> }
-        </thead>
-        <tbody>
+    const htmlTable = <div className={styles.table}>
+        <div className={styles.table_header}>
+            <div className={styles.table_cell}>Game</div>
+            <div className={styles.table_cell}>Player Count</div>
+            <div className={styles.table_cell}>Game Length</div>
+            <div className={styles.table_cell}>Designer</div>
+            <div className={styles.table_cell}>Publisher</div>
+            { user?.is_site_admin && <div className={styles.table_cell}>Delete</div> }
+        </div>
+        <div className={styles.table_body}>
             {games.map((game) => (
-                <tr key={game.id}>
-                    <td><div className={styles.row_holder}>{game.name}</div></td>
-                    <td><div className={styles.row_holder}>{playerCount(game)}</div></td>
-                    <td><div className={styles.row_holder}>{gameDuration(game)}</div></td>
-                    <td><div className={styles.row_holder}>{game.game_designers?.name}</div></td>
-                    <td><div className={styles.row_holder}>{game.game_publishers?.name}</div></td>
-                    { user?.is_site_admin && <td><div className={styles.row_holder}><DeleteGame gameId={game.id} /></div></td> }
-                </tr>
+                <div key={game.id} className={styles.table_row}>
+                    <div className={styles.table_cell}>
+                        <div className={styles.row_holder}>{game.name}</div>
+                    </div>
+                    <div className={styles.table_cell}>
+                        <div className={styles.row_holder}>{playerCount(game)}</div>
+                    </div>
+                    <div className={styles.table_cell}>
+                        <div className={styles.row_holder}>{gameDuration(game)}</div>
+                    </div>
+                    <div className={styles.table_cell}>
+                        <div className={styles.row_holder}>{game.game_designers?.name}</div>
+                    </div>
+                    <div className={styles.table_cell}>
+                        <div className={styles.row_holder}>{game.game_publishers?.name}</div>
+                    </div>
+                    { user?.is_site_admin && <div className={styles.table_cell}><div className={styles.row_holder}><DeleteGame gameId={game.id} /></div></div> }
+                </div>
             ))}
-        </tbody>
-    </table>;
+        </div>
+    </div>;
 
     return htmlTable;
 }

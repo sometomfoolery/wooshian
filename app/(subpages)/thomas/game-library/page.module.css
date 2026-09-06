@@ -6,7 +6,7 @@
     min-height: 100vh;
 }
 
-.page table {
+.table {
     --border-color: #fff;
     --header-background-color: #212c0b;
     --header-text-color: #ddc76f;
@@ -17,27 +17,27 @@
     border-collapse: collapse;
 }
 
-.page table th, .page table td {
+.table .table_cell {
     border: 1px solid var(--border-color);
     text-align: left;
 }
 
-.page table th {
+.table_header .table_cell {
     background-color: var(--header-background-color);
     color: var(--header-text-color);
     font-weight: bold;
 }
 
-.page td {
+.table_cell {
     padding: 10px 0px;
     color: var(--text-color);
 }
 
-.page td:first-child {
+.table_cell:first-child {
     padding-left: 10px;
 }
 
-.page td:last-child {
+.table_cell:last-child {
     padding-right: 10px;
 }
 
@@ -46,16 +46,16 @@
     padding: 10px;
 }
 
-.page tr td:first-child .row_holder {
+.table_row .table_cell:first-child .row_holder {
     border-top-left-radius: 20px;
     border-bottom-left-radius: 20px;
 }
 
-.page tr td:last-child .row_holder {
+.table_row .table_cell:last-child .row_holder {
     border-top-right-radius: 20px;
     border-bottom-right-radius: 20px;
 }
 
-.page table tr:nth-child(even) {
+.table .table_row:nth-child(even) {
     background-color: var(--even-column-background-color);
 }
