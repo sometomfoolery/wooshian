@@ -7,13 +7,10 @@
 }
 
 .table {
-    --border-color: #fff;
     --header-background-color: #212c0b;
     --header-text-color: #ddc76f;
-    --even-column-background-color: #030303;
     --text-color: #000;
     
-    border: 1px solid var(--border-color);
     border-collapse: collapse;
 }
 
@@ -29,18 +26,14 @@
     grid-template-columns: repeat(6, 1fr);
 }
 
-.table .table_row:nth-child(even) {
-    background-color: var(--even-column-background-color);
-}
-
 .table_header .table_cell {
     background-color: var(--header-background-color);
     color: var(--header-text-color);
     font-weight: bold;
+    text-align: center;
 }
 
 .table_cell {
-    border: 1px solid var(--border-color);
     text-align: left;
     padding: 10px 0px;
     color: var(--text-color);
