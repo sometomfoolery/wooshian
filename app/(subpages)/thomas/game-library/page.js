@@ -48,7 +48,7 @@ async function GameLibraryData({user}) {
             <div className={styles.table_cell}>Game Length</div>
             <div className={styles.table_cell}>Designer</div>
             <div className={styles.table_cell}>Publisher</div>
-            { user?.is_site_admin && <div className={styles.table_cell}>Delete</div> }
+            { user?.is_site_admin && <div className={`${styles.table_cell} ${styles.extra_column}`}>Delete</div> }
         </div>
         <div className={styles.table_body}>
             {games.map((game) => (
@@ -68,7 +68,9 @@ async function GameLibraryData({user}) {
                     <div className={styles.table_cell}>
                         <div className={styles.row_holder}>{game.game_publishers?.name}</div>
                     </div>
-                    { user?.is_site_admin && <div className={styles.table_cell}><div className={styles.row_holder}><DeleteGame gameId={game.id} /></div></div> }
+                    { user?.is_site_admin && <div className={`${styles.table_cell} ${styles.extra_column}`}>
+                        <div className={styles.row_holder}><DeleteGame gameId={game.id} /></div>
+                    </div> }
                 </div>
             ))}
         </div>
