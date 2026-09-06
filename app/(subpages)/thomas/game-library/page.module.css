@@ -44,7 +44,6 @@
     text-align: left;
     padding: 10px 0px;
     color: var(--text-color);
-    height: 100%;
 }
 
 .table_cell:first-child {
@@ -59,6 +58,7 @@
     background-color: #ddd;
     padding: 10px;
     box-sizing: border-box;
+    height: 100%;
 }
 
 .table_row .table_cell:first-child .row_holder {
