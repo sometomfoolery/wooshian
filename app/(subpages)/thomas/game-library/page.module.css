@@ -20,6 +20,7 @@
 .table .table_row {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
+    gap: 4px;
 }
 
 .table .table_row:has(.extra_column) {
@@ -57,6 +58,7 @@
 .row_holder {
     background-color: #ddd;
     padding: 10px;
+    box-sizing: border-box;
 }
 
 .table_row .table_cell:first-child .row_holder {
