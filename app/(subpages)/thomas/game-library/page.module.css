@@ -39,14 +39,12 @@
     font-weight: bold;
 }
 
-.table .table_cell {
+.table_cell {
     border: 1px solid var(--border-color);
     text-align: left;
-}
-
-.table_cell {
     padding: 10px 0px;
     color: var(--text-color);
+    height: 100%;
 }
 
 .table_cell:first-child {
