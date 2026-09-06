@@ -21,7 +21,7 @@
 .table .table_row {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
-    gap: 4px 0;
+    gap: 0;
 }
 
 .table .table_header:has(.extra_column),
