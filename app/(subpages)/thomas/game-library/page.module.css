@@ -17,12 +17,14 @@
     border-collapse: collapse;
 }
 
+.table .table_header,
 .table .table_row {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
     gap: 4px;
 }
 
+.table .table_header:has(.extra_column),
 .table .table_row:has(.extra_column) {
     grid-template-columns: repeat(6, 1fr);
 }
