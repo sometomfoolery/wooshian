@@ -14,6 +14,10 @@
     border-collapse: collapse;
 }
 
+/***
+Table rows
+***/
+
 .table .table_header,
 .table .table_row {
     display: grid;
@@ -26,15 +30,18 @@
     grid-template-columns: repeat(6, 1fr);
 }
 
+/***
+Table cells
+***/
+
 .table_header .table_cell {
     background-color: var(--header-background-color);
     color: var(--header-text-color);
     font-weight: bold;
-    text-align: center;
 }
 
 .table_cell {
-    text-align: left;
+    text-align: center;
     padding: 10px 0px;
     color: var(--text-color);
 }
@@ -46,6 +53,10 @@
 .table_cell:last-child {
     padding-right: 10px;
 }
+
+/***
+Row holder
+***/
 
 .row_holder {
     background-color: #ddd;
