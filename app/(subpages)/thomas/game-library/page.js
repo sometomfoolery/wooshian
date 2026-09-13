@@ -41,6 +41,14 @@ async function GameLibraryData({user}) {
         }
     }
 
+    const gameDesigners = async (game) => {
+        const designers = await supabase.from("game_designers").join("games_game_designers", "game_designers.id", "games_game_designers.game_designer_id")
+            .join("games", "games_game_designers.game_id", "games.id")
+            .select("game_designers.name")
+            .eq("games.id", game.id);
+        return designers.data.map(designer => designer.name).join(", ");
+    }
+
     const htmlTable = <div className={styles.table}>
         <div className={styles.table_header}>
             <div className={styles.table_cell}>Game</div>
@@ -50,7 +58,7 @@ async function GameLibraryData({user}) {
             <div className={styles.table_cell}>Publisher</div>
             { user?.is_site_admin && <div className={`${styles.table_cell} ${styles.extra_column}`}>Delete</div> }
         </div>
-            {games.map((game) => (
+            {games.map(async (game) => (
                 <div key={game.id} className={styles.table_row}>
                     <div className={styles.table_cell}>
                         <div className={styles.row_holder}>{game.name}</div>
@@ -62,7 +70,7 @@ async function GameLibraryData({user}) {
                         <div className={styles.row_holder}>{gameDuration(game)}</div>
                     </div>
                     <div className={styles.table_cell}>
-                        <div className={styles.row_holder}>{game.game_designers?.name}</div>
+                        <div className={styles.row_holder}>{await gameDesigners(game)}</div>
                     </div>
                     <div className={styles.table_cell}>
                         <div className={styles.row_holder}>{game.game_publishers?.name}</div>
