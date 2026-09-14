@@ -12,7 +12,7 @@ export const dynamic = 'force-dynamic';
 
 async function GameLibraryData({user}) {
     const supabase = createClient(supabaseUrl, supabasePublishableKey);
-    const { data: games, error } = await supabase.from("games").select("*, game_designers(name), game_publishers(name)");
+    const { data: games, error } = await supabase.from("games").select("*, games_game_designers(game_designers(name)), game_publishers(name)");
     if (error) {
         console.error("Error fetching games: ", error);
         return <p>Error fetching games.</p>;
@@ -41,13 +41,17 @@ async function GameLibraryData({user}) {
         }
     }
 
-    const gameDesigners = async (game) => {
-        const designers = await supabase.from("game_designers").join("games_game_designers", "game_designers.id", "games_game_designers.game_designer_id")
-            .join("games", "games_game_designers.game_id", "games.id")
-            .select("game_designers.name")
-            .eq("games.id", game.id);
+/*    const gameDesigners = async (game) => {
+        const designers = await supabase.from("game_designers").select("name, games (id)")
+            .eq("games(id)", game.id);
         return designers.data.map(designer => designer.name).join(", ");
     }
+*/
+
+    const gameDesigners = (game) =>
+        game.games_game_designers
+            .map((link) => link.game_designers.name)
+            .join(", ");
 
     const htmlTable = <div className={styles.table}>
         <div className={styles.table_header}>
@@ -58,7 +62,7 @@ async function GameLibraryData({user}) {
             <div className={styles.table_cell}>Publisher</div>
             { user?.is_site_admin && <div className={`${styles.table_cell} ${styles.extra_column}`}>Delete</div> }
         </div>
-            {games.map(async (game) => (
+            {games.map((game) => (
                 <div key={game.id} className={styles.table_row}>
                     <div className={styles.table_cell}>
                         <div className={styles.row_holder}>{game.name}</div>
@@ -70,7 +74,7 @@ async function GameLibraryData({user}) {
                         <div className={styles.row_holder}>{gameDuration(game)}</div>
                     </div>
                     <div className={styles.table_cell}>
-                        <div className={styles.row_holder}>{await gameDesigners(game)}</div>
+                        <div className={styles.row_holder}>{gameDesigners(game)}</div>
                     </div>
                     <div className={styles.table_cell}>
                         <div className={styles.row_holder}>{game.game_publishers?.name}</div>
