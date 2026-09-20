@@ -14,7 +14,7 @@ async function GameLibraryData({user}) {
     const supabase = createClient(supabaseUrl, supabasePublishableKey);
     const { data: games, error } = await supabase.from("games").select("*, games_game_designers(game_designers(name)), game_publishers(name)");
     if (error) {
-        console.error("Error fetching games: ", error);
+        console.error("Error fetching games: ", error.message, " (", error.hint, ")");
         return <p>Error fetching games.</p>;
     }
 
