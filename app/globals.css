@@ -44,8 +44,8 @@ body {
   width: 100%;
   padding: 10px 30px;
   background-color: var(--background);
-  align-items: left;
-  justify-content: center;
+  align-items: center;
+  justify-content: start;
 }
 
 .header-button {
