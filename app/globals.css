@@ -9,7 +9,7 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
+    --background: #1a160d;
     --foreground: #ededed;
 
     --primary: #3a3d13;
@@ -42,7 +42,7 @@ body {
 #header {
   display: flex;
   width: 100%;
-  padding: 30px 10px;
+  padding: 10px 30px;
   background-color: var(--background);
   align-items: left;
   justify-content: center;
