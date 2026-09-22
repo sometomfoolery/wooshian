@@ -22,7 +22,8 @@ export default function RootLayout({ children }) {
     <html lang="en" className={`${geistSans.variable} ${geistMono.variable}`}>
       <body>
         <div id={styles.header}>
-          <a href="/">Home</a>
+          <a className="header-button" href="/">Home</a>
+          <a className="header-button" href="/thomas">Thomas</a>
         </div>
         {children}
       </body>
