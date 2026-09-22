@@ -39,6 +39,15 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+#header {
+  display: flex;
+  width: 100%;
+  padding: 0px 10px;
+  background-color: var(--background);
+  align-items: center;
+  justify-content: center;
+}
+
 .header-button {
   background-color: var(--primary);
 
@@ -46,6 +55,7 @@ body {
   border-radius: 5px;
 
   color: var(--text-primary);
+  font-size: 20px;
 }
 
 .popover-container {
