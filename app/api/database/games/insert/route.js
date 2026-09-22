@@ -15,7 +15,7 @@ export async function POST(request) {
         maximum_players,
         minimum_claimed_length_minutes,
         maximum_claimed_length_minutes,
-        game_designer_name,
+//        game_designer_name,
         game_publisher_name
     } = await request.json();
 
@@ -40,7 +40,7 @@ export async function POST(request) {
         return existing.id;
     }
 
-    const reworked_game_designer_id = await get_or_create('game_designers', game_designer_name);
+//    const reworked_game_designer_id = await get_or_create('game_designers', game_designer_name);
     const reworked_game_publishers_id = await get_or_create('game_publishers', game_publisher_name);
 
     const nullable_maximum_players = maximum_players || null;
@@ -55,7 +55,7 @@ export async function POST(request) {
             maximum_players: nullable_maximum_players,
             minimum_claimed_length_minutes: nullable_minimum_claimed_length_minutes,
             maximum_claimed_length_minutes: nullable_maximum_claimed_length_minutes,
-            game_designer_id: reworked_game_designer_id,
+//            game_designer_id: reworked_game_designer_id,
             game_publisher_id: reworked_game_publishers_id
         });
 

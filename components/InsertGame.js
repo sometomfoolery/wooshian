@@ -15,12 +15,12 @@ export default function InsertGame() {
     const [maximum_claimed_length_minutes, set_maximum_claimed_length_minutes] = useState("");
     const [game_designer_name, set_game_designer_name] = useState("");
     const [game_publisher_name, set_game_publisher_name] = useState("");
-    const [game_designers, set_game_designers] = useState([]);
+//    const [game_designers, set_game_designers] = useState([]);
     const [game_publishers, set_game_publishers] = useState([]);
     const [error, setError] = useState(null);
     const router = useRouter();
 
-    async function getGameDesigners() {
+/*    async function getGameDesigners() {
         const supabase = createClient(supabaseUrl, supabasePublishableKey);
         const { data: designers, error } = await supabase.from("game_designers").select("*");
         if (error) {
@@ -28,7 +28,7 @@ export default function InsertGame() {
             return;
         }
         set_game_designers(designers);
-    }
+    }*/
 
     async function getGamePublishers() {
         const supabase = createClient(supabaseUrl, supabasePublishableKey);
@@ -41,7 +41,7 @@ export default function InsertGame() {
     }
 
     useEffect(() => {
-        getGameDesigners();
+//        getGameDesigners();
         getGamePublishers();
     }, []);
 
@@ -58,7 +58,7 @@ export default function InsertGame() {
                 maximum_players,
                 minimum_claimed_length_minutes,
                 maximum_claimed_length_minutes,
-                game_designer_name,
+//                game_designer_name,
                 game_publisher_name
             })
         });
@@ -69,7 +69,7 @@ export default function InsertGame() {
             set_maximum_players('');
             set_minimum_claimed_length_minutes('');
             set_maximum_claimed_length_minutes('');
-            getGameDesigners();
+//            getGameDesigners();
             getGamePublishers();
             router.refresh();
 
@@ -111,7 +111,7 @@ export default function InsertGame() {
                 value={maximum_claimed_length_minutes}
                 onChange={(e) => set_maximum_claimed_length_minutes(e.target.value)}
             />
-            <div>
+{/*            <div>
                 <input
                     type="text"
                     placeholder="New Game Designer Name"
@@ -125,7 +125,7 @@ export default function InsertGame() {
                         </button>
                     ))}
                 </div>
-            </div>
+            </div>*/}
             <div>
                 <input
                     type="text"
