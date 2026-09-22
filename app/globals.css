@@ -1,20 +1,20 @@
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --g-background: #ffffff;
+  --g-foreground: #171717;
 
-  --primary: #3a3d13;
+  --g-primary: #3a3d13;
 
-  --text-primary: #fffce8;
+  --g-text-primary: #fffce8;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #1a160d;
-    --foreground: #ededed;
+    --g-background: #1a160d;
+    --g-foreground: #ededed;
 
-    --primary: #3a3d13;
+    --g-primary: #3a3d13;
 
-    --text-primary: #fffce8;
+    --g-text-primary: #fffce8;
   }
 }
 
@@ -33,7 +33,7 @@ body {
   display: flex;
   flex-direction: column;
   color: white;
-  background: var(--background);
+  background: var(--g-background);
   font-family: Arial, Helvetica, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -43,19 +43,19 @@ body {
   display: flex;
   width: 100%;
   padding: 10px 30px;
-  background-color: var(--background);
+  background-color: var(--g-background);
   align-items: center;
   justify-content: start;
 }
 
 .header-button {
-  background-color: var(--primary);
+  background-color: var(--g-primary);
 
   padding: 10px;
   margin: 0 10px;
   border-radius: 5px;
 
-  color: var(--text-primary);
+  color: var(--g-text-primary);
   font-size: 20px;
 }
 
@@ -74,8 +74,8 @@ body {
 }
 
 .popover-content {
-  background-color: var(--foreground);
-  color: var(--text-primary);
+  background-color: var(--g-foreground);
+  color: var(--g-text-primary);
   padding: 20px;
   border-radius: 8px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
